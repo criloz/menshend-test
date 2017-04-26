@@ -1,0 +1,18 @@
+menshend:
+  image: nebtex/menshend:latest
+  volumes:
+    - ./config.yml:/etc/menshend.yml
+  restart: always
+  links:
+    - vault:vault
+  env_file:
+    - .env
+
+vault:
+  restart: always
+  build: .
+  expose: 
+    - 8200
+  env_file: 
+    - .env
+  
