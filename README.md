@@ -63,6 +63,34 @@ Menshend Cli
 | --output value, -o value| Output format json or yaml | [$MD_OUTPUT] |
 |--api, -a |Baseurl of the menshend api | [$MD_ADDRESS] |
 
+#### Example File Config
+```
+api: http://menshend.lab.local:8787/v1
+kind: AdminService
+spec:
+  secretPaths:
+  - secret/menshend/roles/admin/terminal.
+  meta:
+    roleId: admin
+    # spark will be accessible on  https://spark.lab.example.com/v1?md-role=secret-lab
+    subDomain: terminal.
+    name: terminal
+    description: web terminal.
+    logo: http://icons.iconarchive.com/icons/alecive/flatwoken/64/Apps-Terminal-Pc-104-icon.png
+    tags:
+    - admin
+    - toolds
+    longDescription:
+      remote:
+        url: https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/README.md
+  resolver:
+    yaml:
+      content: |
+        baseUrl: http://localhost:9090
+  strategy:
+    proxy: {}
+```
+
 #### <i class="icon-angle-right"/> server, run, start
 
 ##### Description
