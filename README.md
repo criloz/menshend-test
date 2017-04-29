@@ -1,7 +1,7 @@
 Menshend Cli
 ========
 
-### Global Commands
+## Global Commands
 | Name, shorthand | Description |
 | ------ | -----|
 | --version, -v | Get binary version |
@@ -10,9 +10,9 @@ Menshend Cli
 ##### Usage
 ```menshend [global-command]```
 
-### Commands
+## Commands
 
-#### <i class="icon-angle-right"/>port-forward
+### <i class="icon-angle-right"/>port-forward
 
 ##### Description
 ```Create secure tunnels, this command is adapted from the chisel project https://github.com/jpillora/chisel```
@@ -38,7 +38,7 @@ Menshend Cli
 > - ... mongo ... 192.168.0.5:3000
      menshend port-forward  --server https://labs.example.com  --port 192.168.0.5:3000
 
-#### <i class="icon-angle-right"/>admin, adminServices
+### <i class="icon-angle-right"/>admin, adminServices
 
 ##### Description
 ```Add/update/delete services```
@@ -63,7 +63,7 @@ Menshend Cli
 | --output value, -o value| Output format json or yaml | [$MD_OUTPUT] |
 |--api, -a |Baseurl of the menshend api | [$MD_ADDRESS] |
 
-#### Example File Config
+#### Example File Config (terminal.yml)
 ```
 api: http://menshend.lab.local:8787/v1
 kind: AdminService
@@ -91,7 +91,7 @@ spec:
     proxy: {}
 ```
 
-#### <i class="icon-angle-right"/> server, run, start
+### <i class="icon-angle-right"/> server, run, start
 
 ##### Description
 ```Run menshend server```
