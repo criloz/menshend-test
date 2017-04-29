@@ -1,18 +1,25 @@
 Menshend Cli
 ========
+
 ### Global Commands
 | Name, shorthand | Description |
 | ------ | -----|
 | --version, -v | Get binary version |
 | --help, -v | Shows a list of commands or help for one command |
+
 ##### Usage
 ```menshend [global-command]```
+
 ### Commands
+
 #### <i class="icon-angle-right"/>port-forward
+
 ##### Description
 ```Create secure tunnels, this command is adapted from the chisel project https://github.com/jpillora/chisel```
+
 ##### Usage
 ```menshend port-forward [command options] [arguments...]```
+
 #### Options
 | Name, shorthand | Default | Description |
 | ------ | ------ | -----|
@@ -32,10 +39,13 @@ Menshend Cli
      menshend port-forward  --server https://labs.example.com  --port 192.168.0.5:3000
 
 #### <i class="icon-angle-right"/>admin, adminServices
+
 ##### Description
 ```Add/update/delete services```
+
 ##### Usage
 ```menshend admin subcommand [subcommand options] [arguments...]```
+
 #### Subcommands
 | Name |  Description |
 | ------ | -----|
@@ -44,23 +54,26 @@ Menshend Cli
 | upsert, save, apply, update, put, write, upload, add, replace, create, post | Create or update a service |
 
 #### Subcommand options
-| Name, shorthand | Description |
-| ------ | -----|
-| --role, -r | role/namespace/group of services [$MD_ROLE] |
-| --subdomain, -s | service subdomain |
-| --token, -t | vault token [$VAULT_TOKEN] |
-| --filename, -f | Filename, or URL to files that contains the configuration to apply|
-| --output value, -o value| Output format json or yaml [$MD_OUTPUT] |
-|--api, -a |Baseurl of the menshend api [$MD_ADDRESS]|
+| Name, shorthand | Description | Env var |
+| ------ | -----| ----- |
+| --role, -r | role/namespace/group of services | [$MD_ROLE] |
+| --subdomain, -s | service subdomain | |
+| --token, -t | vault token | [$VAULT_TOKEN] |
+| --filename, -f | Filename, or URL to files that contains the configuration to apply| |
+| --output value, -o value| Output format json or yaml | [$MD_OUTPUT] |
+|--api, -a |Baseurl of the menshend api | [$MD_ADDRESS] |
 
 #### <i class="icon-angle-right"/> server, run, start
+
 ##### Description
 ```Run menshend server```
+
 ##### Usage
 ```menshend server [command options] [arguments...]```
+
 #### Options
-| Name, shorthand | Default | Description |
-| ------ | ------ | -----|
-| --port, -p | 8787 | Bind port|
-| --config, -c | | config file [$MENSHEND_CONFIG_FILE] |
-| --address, -a | "0.0.0.0" | Bind address  |
+| Name, shorthand | Default | Description | Env var |
+| ------ | ------ | -----| -----|
+| --port, -p | 8787 | Bind port| |
+| --config, -c | | config file | [$MENSHEND_CONFIG_FILE] |
+| --address, -a | "0.0.0.0" | Bind address  | |
