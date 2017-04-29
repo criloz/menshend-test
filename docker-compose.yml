@@ -4,15 +4,17 @@ menshend:
     - ./config.yml:/etc/menshend.yml
   restart: always
   links:
-    - vault:vault
+    - vault
   env_file:
-    - .env
+    - .menshend.env
+  ports:
+    - "8787:8787"
 
 vault:
+  image: vault:latest
   restart: always
-  build: .
   expose: 
     - 8200
   env_file: 
-    - .env
+    - .vault.env
   
