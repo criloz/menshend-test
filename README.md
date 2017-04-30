@@ -105,3 +105,15 @@ spec:
 | --port, -p | 8787 | Bind port| |
 | --config, -c | | config file | [$MENSHEND_CONFIG_FILE] |
 | --address, -a | "0.0.0.0" | Bind address  | |
+
+#### Example config file (menshend server -c menshend.yml)
+```
+Uris:
+  BaseUrl: http://yourdomain.com
+hashKey: yourHashKey
+blockKey: yourBlockKey
+Space:
+  Name: Genos
+  Logo: http://orig01.deviantart.net/3585/f/2015/344/1/f/one_punch_man_genos_render_2_by_ayakayukihiro-d9jnh9e.png
+  Description: Nebtex Laboratory
+```
