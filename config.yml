@@ -1,7 +1,8 @@
-Uris:
-  BaseUrl: http://lab.local:8787
-  MenshendSubdomain: menshend.
-Space:
-  Name: Genos
-  Logo: http://orig01.deviantart.net/3585/f/2015/344/1/f/one_punch_man_genos_render_2_by_ayakayukihiro-d9jnh9e.png
-  Description: Nebtex Laboratory
+uris:
+  baseUrl: http://ignu.menshend.io
+hashKey: a6a8a000c6a440bfa71db30f0477c67c
+blockKey: e8eb5fb1c8bd4d97b21a01f39aeba108
+space:
+  name: Local lab
+  logo: https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg
+  description: Local laboratory

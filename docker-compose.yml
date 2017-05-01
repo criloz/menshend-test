@@ -8,7 +8,7 @@ menshend:
   env_file:
     - .menshend.env
   ports:
-    - "8787:8787"
+    - "8787:80"
 
 vault:
   image: vault:latest
