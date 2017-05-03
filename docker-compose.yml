@@ -17,4 +17,3 @@ vault:
     - "8200:8200"
   env_file: 
     - .vault.env
-  
