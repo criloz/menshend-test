@@ -11,7 +11,7 @@ install-menshend-cli:
 	rm menshend_linux_amd64.zip
 
 create-menshend-services:
-	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/portainer.yml
+	find ./sampleServices -type f -exec echo "Creating service '{}', menshend admin apply -api http://ignu.menshend.io/v1 -f '{}'" \;
 
 compose:
 	docker-compose up -d
