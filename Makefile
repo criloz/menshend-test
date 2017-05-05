@@ -1,4 +1,4 @@
-all: install-menshend-cli compose start-services create-menshend-services
+all: install-menshend-cli compose create-menshend-services
 
 install-menshend-cli:
 	apt-get install -qy curl
