@@ -47,7 +47,7 @@ mongo-express:
 
 postgres:
   image: postgres:latest
-  environment: : 
+  environment:
     - POSTGRES_PASSWORD=postgres
   restart: always
   ports:
