@@ -4,10 +4,9 @@ install-menshend-cli:
 	apt-get install -qy curl
 	apt-get install -qy unzip
 	curl -LO https://github.com/nebtex/menshend/releases/download/$(curl -s https://raw.githubusercontent.com/nebtex/menshend/master/stable.txt)/menshend_linux_amd64.zip
-	mkdir menshend-cli
-	unzip menshend_linux_amd64.zip -d menshend-cli
+	unzip menshend_linux_amd64.zip menshend
 	cp menshend-cli/menshend /usr/local/bin
-	rm -rf menshend-cli
+	rm menshend
 	rm menshend_linux_amd64.zip 
 
 create-services:
