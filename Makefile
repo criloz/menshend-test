@@ -10,9 +10,6 @@ install-menshend-cli:
 	rm menshend
 	rm menshend_linux_amd64.zip
 
-start-services:
-	docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer --no-auth
-
 create-menshend-services:
 	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/portainer.yml
 
