@@ -6,7 +6,7 @@ install-menshend-cli:
 	# @TODO: how to run $(curl -s https://raw.githubusercontent.com/nebtex/menshend/master/stable.txt) instead `latest`
 	curl -LO https://github.com/nebtex/menshend/releases/download/latest/menshend_linux_amd64.zip
 	unzip menshend_linux_amd64.zip menshend
-	cp menshend-cli/menshend /usr/local/bin
+	cp menshend /usr/local/bin
 	rm menshend
 	rm menshend_linux_amd64.zip
 	unset MENSHEND_STABLE 
