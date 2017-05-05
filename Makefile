@@ -9,10 +9,8 @@ install-menshend-cli:
 	cp menshend /usr/local/bin
 	rm menshend
 	rm menshend_linux_amd64.zip
-	unset MENSHEND_STABLE 
 
 create-services:
-	export VAULT_TOKEN=myroot
 	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/portainer.yml
 
 compose:
