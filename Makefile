@@ -11,7 +11,9 @@ install-menshend-cli:
 	rm menshend_linux_amd64.zip
 
 create-menshend-services:
-	find ./sampleServices -type f -exec echo "Creating service '{}', menshend admin apply -api http://ignu.menshend.io/v1 -f '{}'" \;
+	# @TODO: Why is not working? find ./sampleServices -type f -exec echo "Creating service '{}', menshend admin apply -api http://ignu.menshend.io/v1 -f '{}'" \;
+	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/portainer.yml
+	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/mongo-express.yml
 
 compose:
 	docker-compose up -d
