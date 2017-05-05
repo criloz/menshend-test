@@ -14,6 +14,7 @@ create-menshend-services:
 	# @TODO: Why is not working? find ./sampleServices -type f -exec echo "Creating service '{}', menshend admin apply -api http://ignu.menshend.io/v1 -f '{}'" \;
 	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/portainer.yml
 	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/mongo-express.yml
+	menshend admin apply -api http://ignu.menshend.io/v1 -f ./sampleServices/pgweb.yml
 
 compose:
 	docker-compose up -d
