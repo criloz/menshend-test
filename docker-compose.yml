@@ -62,4 +62,4 @@ pgweb:
   links: 
     - postgres
   environment:
-    - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+    - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
