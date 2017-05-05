@@ -11,7 +11,7 @@ spec:
     - monitoring
     longDescription:
       remote:
-        url: https://github.com/portainer/portainer/blob/develop/README.md
+        url: https://raw.githubusercontent.com/portainer/portainer/develop/README.md
   resolver:
     yaml:
       content: |
