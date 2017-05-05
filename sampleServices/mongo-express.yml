@@ -1,0 +1,20 @@
+kind: AdminService
+spec:
+  meta:
+    roleId: production
+    subDomain: mongo-express.
+    name: mongo-express
+    description: Web-based MongoDB admin interface written with Node.js, Express and Bootstrap3.
+    logo: https://camo.githubusercontent.com/5bdf3f46fa112a7bec272b953022d53210feef36/687474703a2f2f692e696d6775722e636f6d2f585763496759312e706e67
+    tags:
+    - admin
+    - management
+    longDescription:
+      remote:
+        url: https://github.com/mongo-express/mongo-express/blob/master/README.md
+  resolver:
+    yaml:
+      content: |
+        baseUrl: http://mongo-express:8081
+  strategy:
+    proxy: {}

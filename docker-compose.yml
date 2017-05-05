@@ -6,6 +6,7 @@ menshend:
   links:
     - vault
     - portainer
+    - mongo-express
   env_file:
     - .menshend.env
   ports:
@@ -28,3 +29,15 @@ portainer:
     - /var/run/docker.sock:/var/run/docker.sock
     - /srv/docker/portainer:/data
   restart: always
+
+mongo:
+  image: mongo:latest
+  ports:
+    - "27017:27017"
+
+mongo-express:
+  image: mongo-express:latest
+  ports:
+    - "8081:8081"
+  links:
+    - mongo
