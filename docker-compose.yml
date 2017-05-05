@@ -43,3 +43,16 @@ mongo-express:
     - "8081:8081"
   links:
     - mongo
+
+postgres:
+  image: postgres:latest
+  restart: always
+  ports:
+    - "5432:5432"
+
+pgweb:
+  image: donnex/pgweb:latest
+  restart: always
+  ports: "8080:8080"
+  links:
+    - postgres
