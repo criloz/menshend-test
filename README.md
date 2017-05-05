@@ -1,6 +1,11 @@
 Menshend Cli
 ========
 
+## How to run this example
+
+
+For this example the makefile exports the  env var `VAULT_TOKEN` with the respectively vault token id, in this example the default token id is `myroot`, if you want to use other token id change the `VAULT_DEV_ROOT_TOKEN_ID` in `.vault.env` file, and also set your env var `VAULT_TOKEN` with the same value in the Makefile.
+
 ## Global Commands
 | Name, shorthand | Description |
 | ------ | -----|
