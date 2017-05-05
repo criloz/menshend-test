@@ -11,7 +11,7 @@ spec:
     - management
     longDescription:
       remote:
-        url: https://github.com/mongo-express/mongo-express/blob/master/README.md
+        url: https://raw.githubusercontent.com/mongo-express/mongo-express/master/README.md
   resolver:
     yaml:
       content: |
