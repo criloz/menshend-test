@@ -5,6 +5,7 @@ menshend:
   restart: always
   links:
     - vault
+    - portainer
   env_file:
     - .menshend.env
   ports:
@@ -17,3 +18,13 @@ vault:
     - "8200:8200"
   env_file: 
     - .vault.env
+
+portainer:
+  image: portainer/portainer:latest
+  command: --no-auth
+  ports:
+    - "9000:9000"
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /srv/docker/portainer:/data
+  restart: always

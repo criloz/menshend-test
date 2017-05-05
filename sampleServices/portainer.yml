@@ -15,6 +15,6 @@ spec:
   resolver:
     yaml:
       content: |
-        baseUrl: http://localhost:9000
+        baseUrl: http://portainer:9000
   strategy:
     proxy: {}
