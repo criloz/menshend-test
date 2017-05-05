@@ -16,16 +16,16 @@ menshend:
 vault:
   image: vault:latest
   restart: always
-  ports:
-    - "8200:8200"
+  expose:
+    - "8200"
   env_file: 
     - .vault.env
 
 portainer:
   image: portainer/portainer:latest
   command: --no-auth
-  ports:
-    - "9000:9000"
+  expose:
+    - "9000"
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
     - /srv/docker/portainer:/data
@@ -34,14 +34,14 @@ portainer:
 mongo:
   image: mongo:latest
   restart: always
-  ports:
-    - "27017:27017"
+  expose:
+    - "27017"
 
 mongo-express:
   image: mongo-express:latest
   restart: always
   ports:
-    - "8081:8081"
+    - "8081"
   links:
     - mongo
 
@@ -50,15 +50,15 @@ postgres:
   environment:
     - POSTGRES_PASSWORD=postgres
   restart: always
-  ports:
-    - "5432:5432"
+  expose:
+    - "5432"
 
 pgweb:
   image: sosedoff/pgweb:latest
   restart: always
   image: sosedoff/pgweb
-  ports: 
-    - "8082:8081" 
+  expose: 
+    - "8081" 
   links: 
     - postgres
   environment:
