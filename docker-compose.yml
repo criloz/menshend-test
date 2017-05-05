@@ -47,14 +47,19 @@ mongo-express:
 
 postgres:
   image: postgres:latest
+  environment: : 
+    - POSTGRES_PASSWORD=postgres
   restart: always
   ports:
     - "5432:5432"
 
 pgweb:
-  image: donnex/pgweb:latest
+  image: sosedoff/pgweb:latest
   restart: always
+  image: sosedoff/pgweb
   ports: 
-    - "8080:8080"
-  links:
+    - "8080:8080" 
+  links: 
     - postgres
+  environment:
+    - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
