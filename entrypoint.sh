@@ -1,1 +1,0 @@
-./menshend admin apply -api http://ignu.menshend.io/v1 -f portainer.yml
