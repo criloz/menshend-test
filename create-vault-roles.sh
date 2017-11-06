@@ -36,3 +36,9 @@ vault write database/roles/pg_prod_onlyread \
     default_ttl="5h" \
     max_ttl="10h"
 
+menshend admin add -f sampleServices/elasticsearch.yml
+menshend admin add -f sampleServices/kibana.yml
+menshend admin add -f sampleServices/mongo.yml
+menshend admin add -f sampleServices/pg-dev.yml
+menshend admin add -f sampleServices/pg-prod.yml
+menshend admin add -f sampleServices/portainer.yml
