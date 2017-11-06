@@ -1,145 +1,145 @@
 version: '2'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.3.0
+    expose:
+      - "9200"
+  fluentd:
+    build: ./fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+    links:
+      - "elasticsearch"
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    logging:
+        driver: "json-file"
+        options:
+            max-size: 100m
+            max-file: "5"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.3.0
+    links:
+      - "elasticsearch"
+    ports:
+      - "5601:5601"
 
-elasticsearch:
-  image: docker.elastic.co/elasticsearch/elasticsearch:5.3.0
-  expose:
-    - "9200"
-fluentd:
-  build: ./fluentd
-  volumes:
-    - ./fluentd/conf:/fluentd/etc
-  links:
-    - "elasticsearch"
-  ports:
-    - "24224:24224"
-    - "24224:24224/udp"
-  logging:
-      driver: "json-file"
+  menshend:
+    depends_on:
+      - fluentd
+    logging:
+      driver: "fluentd"
       options:
-          max-size: 100m
-          max-file: "5"
-kibana:
-  image: docker.elastic.co/kibana/kibana:5.3.0
-  links:
-    - "elasticsearch"
-  ports:
-    - "5601:5601"
+        fluentd-address: localhost:24224
+        tag: menshend
+    image: nebtex/menshend:latest
+    volumes:
+      - ./config.yml:/etc/menshend.yml
+    restart: always
+    links:
+      - vault
+      - portainer
+      - mongo-express
+      - pgweb
+    env_file:
+      - .menshend.env
+    ports:
+      - "80:8787"
 
-menshend:
-  depends_on:
-    - fluentd
-  logging:
-    driver: "fluentd"
-    options:
-      fluentd-address: localhost:24224
-      tag: menshend
-  image: nebtex/menshend:latest
-  volumes:
-    - ./config.yml:/etc/menshend.yml
-  restart: always
-  links:
-    - vault
-    - portainer
-    - mongo-express
-    - pgweb
-  env_file:
-    - .menshend.env
-  ports:
-    - "80:8787"
+  vault:
+    depends_on:
+      - fluentd
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: vault
+    image: vault:latest
+    restart: always
+    expose:
+      - "8200"
+    ports:
+      - "8200:8200"
+    env_file: 
+      - .vault.env
 
-vault:
-  depends_on:
-    - fluentd
-  logging:
-    driver: "fluentd"
-    options:
-      fluentd-address: localhost:24224
-      tag: vault
-  image: vault:latest
-  restart: always
-  expose:
-    - "8200"
-  ports:
-    - "8200:8200"
-  env_file: 
-    - .vault.env
+  portainer:
+    depends_on:
+      - fluentd
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: portainer
+    image: portainer/portainer:latest
+    command: --no-auth
+    expose:
+      - "9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /srv/docker/portainer:/data
+    restart: always
 
-portainer:
-  depends_on:
-    - fluentd
-  logging:
-    driver: "fluentd"
-    options:
-      fluentd-address: localhost:24224
-      tag: portainer
-  image: portainer/portainer:latest
-  command: --no-auth
-  expose:
-    - "9000"
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-    - /srv/docker/portainer:/data
-  restart: always
+  mongo:
+    depends_on:
+      - fluentd
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: mongo
+    image: mongo:latest
+    restart: always
+    expose:
+      - "27017"
 
-mongo:
-  depends_on:
-    - fluentd
-  logging:
-    driver: "fluentd"
-    options:
-      fluentd-address: localhost:24224
-      tag: mongo
-  image: mongo:latest
-  restart: always
-  expose:
-    - "27017"
+  postgres_dev:
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: postgres_dev
+    depends_on:
+      - fluentd
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    restart: always
+    expose:
+      - "5432"
 
-postgres_dev:
-  logging:
-    driver: "fluentd"
-    options:
-      fluentd-address: localhost:24224
-      tag: postgres_dev
-  depends_on:
-    - fluentd
-  image: postgres:latest
-  environment:
-    - POSTGRES_PASSWORD=postgres
-  restart: always
-  expose:
-    - "5432"
+  postgres_prod:
+    depends_on:
+      - fluentd
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: postgres_prod
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    restart: always
+    expose:
+      - "5432"
 
-postgres_prod:
-  depends_on:
-    - fluentd
-  logging:
-    driver: "fluentd"
-    options:
-      fluentd-address: localhost:24224
-      tag: postgres_prod
-  image: postgres:latest
-  environment:
-    - POSTGRES_PASSWORD=postgres
-  restart: always
-  expose:
-    - "5432"
-
-consul:
-  depends_on:
-    - fluentd
-  logging:
-    driver: "fluentd"
-    options:
-      fluentd-address: localhost:24224
-      tag: consul
-  image: consul:0.9.2
-  entrypoint:
-   - consul
-   - agent
-   - -server
-   - -bootstrap
-   - -client=0.0.0.0
-   - -ui
-   - -data-dir=/tmp/consul
-  expose:
-  - "8500"
+  consul:
+    depends_on:
+      - fluentd
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: consul
+    image: consul:0.9.2
+    entrypoint:
+    - consul
+    - agent
+    - -server
+    - -bootstrap
+    - -client=0.0.0.0
+    - -ui
+    - -data-dir=/tmp/consul
+    expose:
+    - "8500"
