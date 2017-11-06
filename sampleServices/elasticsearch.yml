@@ -1,0 +1,22 @@
+kind: AdminService
+spec:
+  meta:
+    roleId: prod
+    subDomain: elasticsearch.prod.
+    name: elasticsearch
+    description: elasticsearch
+    logo: https://cdn.worldvectorlogo.com/logos/elasticsearch.svg
+    tags:
+    - production
+    - databases
+    - monitoring
+    - logs
+    longDescription:
+      remote:
+        url: https://raw.githubusercontent.com/elastic/elasticsearch/master/README.textile
+  resolver:
+    yaml:
+      content: |
+        baseUrl: http://elasticsearch:9200
+  strategy:
+    proxy: {}

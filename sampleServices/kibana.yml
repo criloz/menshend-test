@@ -1,0 +1,22 @@
+kind: AdminService
+spec:
+  meta:
+    roleId: prod
+    subDomain: kibana.prod.
+    name: kibana
+    description: cluster logs
+    logo: https://oliverveits.files.wordpress.com/2016/11/kibana-logo-color-v.png?w=328&h=300
+    tags:
+    - admin
+    - logs
+    - dev
+    - monitoring
+    longDescription:
+      remote:
+        url: https://raw.githubusercontent.com/elastic/kibana/master/README.md
+  resolver:
+    yaml:
+      content: |
+        baseUrl: http://kibana:5601
+  strategy:
+    proxy: {}

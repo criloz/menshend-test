@@ -1,14 +1,14 @@
 kind: AdminService
 spec:
   meta:
-    roleId: production
-    subDomain: portainer.
+    roleId: dev
+    subDomain: portainer.dev.
     name: portainer
     description: A lightweight management UI which allows you to easily manage your Docker host or Swarm cluster.
     logo: http://portainer.io/images/logo_alt.png
     tags:
     - admin
-    - monitoring
+    - docker
     longDescription:
       remote:
         url: https://raw.githubusercontent.com/portainer/portainer/develop/README.md

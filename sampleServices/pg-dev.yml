@@ -1,0 +1,21 @@
+kind: AdminService
+spec:
+  meta:
+    roleId: dev
+    subDomain: postgres.dev.
+    name: postgres
+    description: postgres db
+    logo: https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg
+    tags:
+    - dev
+    - databases
+    - postgres
+    longDescription:
+      remote:
+        url: https://raw.githubusercontent.com/postgres/postgres/master/README
+  resolver:
+    yaml:
+      content: |
+        baseUrl: tcp://postgres_dev:5432
+  strategy:
+    portForward: {}

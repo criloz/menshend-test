@@ -1,0 +1,21 @@
+kind: AdminService
+spec:
+  meta:
+    roleId: dev
+    subDomain: mongo.dev.
+    name: mongo
+    description: mongo db
+    logo: http://blog.findemor.es/wp-content/uploads/2015/06/mongodb.png
+    tags:
+    - dev
+    - databases
+    - mongo
+    longDescription:
+      remote:
+        url: https://github.com/mongodb/mongo/blob/master/README
+  resolver:
+    yaml:
+      content: |
+        baseUrl: tcp://mongo:27017
+  strategy:
+    portForward: {}

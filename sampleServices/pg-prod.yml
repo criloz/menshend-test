@@ -1,0 +1,21 @@
+kind: AdminService
+spec:
+  meta:
+    roleId: prod
+    subDomain: postgres.prod.
+    name: postgres
+    description: postgres db
+    logo: https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg
+    tags:
+    - production
+    - databases
+    - postgres
+    longDescription:
+      remote:
+        url: https://raw.githubusercontent.com/postgres/postgres/master/README
+  resolver:
+    yaml:
+      content: |
+        baseUrl: tcp://postgres_prod:5432
+  strategy:
+    portForward: {}
