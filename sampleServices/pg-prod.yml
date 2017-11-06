@@ -19,3 +19,6 @@ spec:
         baseUrl: tcp://postgres_prod:5432
   strategy:
     portForward: {}
+  secretPaths:
+  -  database/creds/pg_prod_onlyread
+  -  database/creds/pg_prod_full_access

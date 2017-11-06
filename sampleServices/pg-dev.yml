@@ -19,3 +19,5 @@ spec:
         baseUrl: tcp://postgres_dev:5432
   strategy:
     portForward: {}
+  secretPaths:
+  -  database/creds/pg_dev_full_access
