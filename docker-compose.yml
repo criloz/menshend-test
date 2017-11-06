@@ -106,7 +106,7 @@ services:
         tag: postgres_dev
     depends_on:
       - fluentd
-    image: postgres:latest
+    build: ./postgres
     environment:
       - POSTGRES_PASSWORD=postgres
     restart: always
@@ -121,7 +121,7 @@ services:
       options:
         fluentd-address: localhost:24224
         tag: postgres_prod
-    image: postgres:latest
+    build: ./postgres
     environment:
       - POSTGRES_PASSWORD=postgres
     restart: always
