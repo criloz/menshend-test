@@ -40,8 +40,12 @@ services:
     links:
       - vault
       - portainer
-      - mongo-express
-      - pgweb
+      - mongo
+      - postgres_dev
+      - postgres_prod
+      - consul
+      - kibana
+      - elasticsearch
     env_file:
       - .menshend.env
     ports:
