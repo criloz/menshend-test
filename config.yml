@@ -1,8 +1,8 @@
 uris:
-  baseUrl: http://ignu.menshend.io
+  baseUrl: http://demo.menshend.io
 hashKey: a6a8a000c6a440bfa71db30f0477c67c
 blockKey: e8eb5fb1c8bd4d97b21a01f39aeba108
 space:
-  name: Local lab
+  name: Menshend demo
   logo: https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg
-  description: Local laboratory
+  description: Menshend demo
